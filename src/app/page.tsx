@@ -1,9 +1,11 @@
-import Image from "next/image";
+import AuthScreen from "@/components/home/auth-screen/AuthScreen";
+import HomeScreen from "@/components/home/home-screen/HomeScreen";
 
 export default function Home() {
+  const user = false;
   return (
     <main>
-      <h1>Hello World</h1>
+      {user ? <HomeScreen /> : <AuthScreen />}
     </main>
   );
 }
