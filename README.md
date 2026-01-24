@@ -1,3 +1,21 @@
+npx create-next-app@latest .
+npx shadcn@latest init
+npm install next-themes
+npx shadcn@latest add button
+npx shadcn@latest add dropdown-menu
+npm i next-cloudinary
+npx shadcn@latest add badge
+npx shadcn@latest add card
+npx shadcn@latest add @magicui/marquee
+npx shadcn@latest add label radio-group
+
+
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
