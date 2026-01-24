@@ -1,8 +1,13 @@
-import React from 'react'
+import BaseLayout from "@/components/BaseLayout"
+import UserProfile from "./UserProfile"
+import Posts from "./Posts"
 
 const HomeScreen = () => {
   return (
-    <div>HomeScreen</div>
+    <BaseLayout>
+      <UserProfile />
+      <Posts />
+    </BaseLayout>
   )
 }
 

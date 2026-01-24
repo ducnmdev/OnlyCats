@@ -8,8 +8,9 @@ npx shadcn@latest add badge
 npx shadcn@latest add card
 npx shadcn@latest add @magicui/marquee
 npx shadcn@latest add label radio-group
-
-
+npx shadcn@latest add avatar
+npm install lucide-react
+npx shadcn@latest add skeleton
 
 
 
