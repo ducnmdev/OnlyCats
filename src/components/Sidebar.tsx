@@ -61,9 +61,9 @@ const Sidebar = () => {
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <Link href={'#'}>
-                            <DropdownMenuItem>Billing</DropdownMenuItem>
+                            <DropdownMenuItem className="cursor-pointer">Billing</DropdownMenuItem>
                         </Link>
-                        <DropdownMenuItem>Logout</DropdownMenuItem>
+                        <DropdownMenuItem className="cursor-pointer">Logout</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
 

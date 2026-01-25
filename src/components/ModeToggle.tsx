@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
@@ -11,10 +10,10 @@ export function ModeToggle() {
 
   return (
     <div className="flex flex-wrap gap-2 px-1.5 md:px-2">
-      <Button variant="outline" size="icon" onClick={() => setTheme("light")}>
+      <Button variant="outline" className="text-black! dark:text-white!" size="icon" onClick={() => setTheme("light")}>
         <Sun />
       </Button>
-      <Button variant="outline" size="icon" onClick={() => setTheme("dark")}>
+      <Button variant="outline" className="text-black! dark:text-white!" size="icon" onClick={() => setTheme("dark")}>
         <Moon />
       </Button>
     </div>
