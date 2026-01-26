@@ -9,7 +9,7 @@ export function ModeToggle() {
   const { setTheme } = useTheme()
 
   return (
-    <div className="flex flex-wrap gap-2 px-1.5 md:px-2">
+    <div className="flex flex-wrap w-9 lg:w-auto gap-2 px-1.5 md:px-2">
       <Button variant="outline" className="text-black! dark:text-white!" size="icon" onClick={() => setTheme("light")}>
         <Sun />
       </Button>

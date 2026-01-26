@@ -11,6 +11,10 @@ npx shadcn@latest add label radio-group
 npx shadcn@latest add avatar
 npm install lucide-react
 npx shadcn@latest add skeleton
+npx shadcn@latest add select
+npx shadcn@latest add tabs
+npx shadcn@latest add textarea
+
 
 
 

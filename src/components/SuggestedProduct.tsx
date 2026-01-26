@@ -18,7 +18,7 @@ const SuggestedProduct = ({ product }: { product: any }) => {
                 </div>
             </CardHeader>
             <CardContent className="flex flex-col flex-1 gap-2 p-2">
-                <img src={product.image} alt="Product Image" className="h-44 object-cover" />
+                <img src={product.image} alt="Product Image" className="h-44 object-cover rounded-md" />
                 <div className="flex justify-center mt-auto">
                     <Link href={`/merch/${product.id}`} className={cn('w-full', buttonVariants({ size: 'sm' }))}>
                         Buy
