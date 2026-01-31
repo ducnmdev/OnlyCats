@@ -90,7 +90,7 @@ export default function Pricing() {
 			<div className='w-full flex flex-col items-center mb-24'>
 				<div className='mx-auto max-w-7xl px-6 xl:px-8'>
 					<div className='mx-auto max-w-2xl sm:text-center'>
-						<h1 className='text-center text-black dark:text-white text-4xl font-semibold max-w-xs sm:max-w-none md:text-6xl !leading-tight'>
+						<h1 className='text-center text-black dark:text-white text-4xl font-semibold max-w-xs sm:max-w-none md:text-6xl leading-tight!'>
 							Pricing
 						</h1>
 					</div>
@@ -162,7 +162,7 @@ export default function Pricing() {
 								))}
 							</ul>
 						</div>
-						<div className='-mt-2 p-2 xl:pr-8 xl:mt-0 w-full xl:max-w-md xl:flex-shrink-0'>
+						<div className='-mt-2 p-2 xl:pr-8 xl:mt-0 w-full xl:max-w-md xl:shrink-0'>
 							<div
 								className={cn(
 									"rounded-2xl py-10 text-center ring-1 ring-inset ring-gray-300/50 dark:ring-gray-800/50 xl:flex xl:flex-col xl:justify-center xl:py-16",

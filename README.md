@@ -14,6 +14,9 @@ npx shadcn@latest add skeleton
 npx shadcn@latest add select
 npx shadcn@latest add tabs
 npx shadcn@latest add textarea
+npx shadcn@latest add checkbox
+npx shadcn@latest add alert
+npx shadcn@latest add input
 
 
 

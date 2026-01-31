@@ -1,9 +1,16 @@
 'use client'
+
 import UnderlinedText from "@/components/decorators/UnderlinedText"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Textarea } from "@/components/ui/textarea"
+import { TriangleAlert } from "lucide-react"
+import { CldUploadWidget, CldVideoPlayer, CloudinaryUploadWidgetInfo } from "next-cloudinary"
+import Image from "next/image"
 import { useState } from "react"
 
 const ContentTab = () => {
@@ -45,16 +52,71 @@ const ContentTab = () => {
                             value={mediaType}
                             onValueChange={(value: "image" | "video") => setMediaType(value)}
                         >
-                            <div className='flex items-center'>
+                            <div className='flex items-center space-x-2'>
                                 <RadioGroupItem value='video' id='video' />
-                                <Label className="pl-2" htmlFor='video'>Video</Label>
+                                <Label htmlFor='video'>Video</Label>
                             </div>
-                            <div className='flex items-center'>
+                            <div className='flex items-center space-x-2'>
                                 <RadioGroupItem value='image' id='image' />
-                                <Label className="pl-2" htmlFor='image'>Image</Label>
+                                <Label htmlFor='image'>Image</Label>
                             </div>
                         </RadioGroup>
+
+                        <CldUploadWidget
+                            signatureEndpoint={"http://localhost:5001/api/v1/cloudinary/signature"}
+                            onSuccess={(result, { widget }) => {
+                                setMediaUrl((result.info as CloudinaryUploadWidgetInfo).secure_url);
+                                widget.close()
+                            }}
+                        >
+                            {({ open }) => {
+                                return (
+                                    <Button onClick={() => open()} variant={"outline"} type='button' className="cursor-pointer">
+                                        Upload Media
+                                    </Button>
+                                );
+                            }}
+                        </CldUploadWidget>
+
+                        {mediaUrl && mediaType === "image" && (
+                            <div className='flex justify-center relative w-full h-96'>
+                                <Image fill src={mediaUrl} alt='Uploaded Image' className='object-contain rounded-md' />
+                            </div>
+                        )}
+
+                        {mediaUrl && mediaType === "video" && (
+                            <div className='w-full mx-auto'>
+                                <CldVideoPlayer width={960} height={540} className='rounded-md' src={mediaUrl} />
+                            </div>
+                        )}
+
+                        <div className='flex items-center space-x-2'>
+                            <Checkbox
+                                id='public'
+                                checked={isPublic}
+                                onCheckedChange={(e) => setIsPublic(e as boolean)}
+                            />
+
+                            <Label
+                                htmlFor='public'
+                                className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+                            >
+                                Mark as public
+                            </Label>
+                        </div>
+
+                        <Alert variant='default' className='text-yellow-400!'>
+                            <TriangleAlert className='h-4 w-4 text-yellow-400!' />
+                            <AlertTitle>Warning</AlertTitle>
+                            <AlertDescription className='text-yellow-400!'>Public posts will be visible to all users.</AlertDescription>
+                        </Alert>
                     </CardContent >
+
+                    <CardFooter>
+                        <Button className='w-full' type='submit'>
+                            Create Post
+                        </Button>
+                    </CardFooter>
                 </Card>
             </form>
         </>

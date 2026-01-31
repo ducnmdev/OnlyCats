@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import 'next-cloudinary/dist/cld-video-player.css';
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 
