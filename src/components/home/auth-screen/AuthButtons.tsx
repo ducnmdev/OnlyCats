@@ -8,7 +8,7 @@ const AuthButtons = () => {
   return (
     <div className="flex gap-3 flex-1 md:flex-row flex-col">
       <Link href={"/signup"} className="flex-1" >
-        <Button className="w-full cursor-pointer" variant={"secondary"}
+        <Button className="w-full cursor-pointer bg-slate-900 text-white hover:bg-slate-800 dark:bg-secondary dark:text-secondary-foreground"
           onClick={() => setLoading(true)}
           disabled={loading}
         >
