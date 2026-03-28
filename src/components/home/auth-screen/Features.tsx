@@ -10,38 +10,38 @@ interface IFeature {
 
 const features: IFeature[] = [
     {
-        title: "Expert Horse Care Tips",
+        title: "Expert Cat Care Tips",
         description:
-            "Learn the best practices for keeping your horses healthy and happy. From nutrition advice to grooming.",
+            "Learn the best ways to keep your cats healthy and happy. From nutrition and grooming to playtime and daily care.",
         image: "/gifs/gif1.gif",
     },
     {
-        title: "Riding Techniques",
+        title: "Play & Interaction Tips",
         description:
-            "Enhance your riding skills with our detailed tutorials. Whether you're into dressage, jumping, or just casual riding, find techniques in seconds.",
+            "Improve how you play and bond with your cat through engaging activities. From interactive toys to fun daily routines, discover ideas in seconds.",
         image: "/gifs/gif2.gif",
     },
     {
-        title: "Daily Farm Life",
-        description: "See how we care for our horses, manage the farm, and enjoy the beauty of nature.",
+        title: "Daily Cat Life",
+        description: "Take a peek into our daily life with our cats, from feeding and playtime to cozy, relaxing moments.",
         image: "/gifs/gif3.gif",
     },
 ];
 
 const featureList: string[] = [
-    "Horse Health Insights",
+    "Cat Health Insights",
     "Daily Tips",
-    "Behind-the-Scenes Access",
-    "Training Tutorials",
-    "Riding Techniques",
-    "Horse Care Advice",
+    "Inside Our Cat Life",
+    "Cat Training Tips",
+    "Interactive Play Tips",
+    "Cat Care Advice",
 ];
 
 const Features = () => {
     return (
         <section className="container py-24 sm:py-32 space-y-8">
             <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
-                Many <UnderlinedText className="underline-offset-8">OnlyHorse</UnderlinedText> Features 🐴
+                Many <UnderlinedText className="underline-offset-8">OnlyCat</UnderlinedText> Features 🐈
             </h2>
 
             <div className="flex flex-wrap md:justify-center gap-4">

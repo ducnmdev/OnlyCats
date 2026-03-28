@@ -6,37 +6,37 @@ const reviews = [
     {
         name: "Jack",
         username: "@jack",
-        body: "The horse care tips are incredibly helpful. Love this site!",
+        body: "These kitty care tips are super helpful. Love this site!",
         img: "https://avatar.vercel.sh/jack",
     },
     {
         name: "Jill",
         username: "@jill",
-        body: "Fantastic insights on horse training. Highly recommend!",
+        body: "Amazing tips on cat behavior. Totally recommend!",
         img: "https://avatar.vercel.sh/jill",
     },
     {
         name: "John",
         username: "@john",
-        body: "Great community for horse lovers. Very informative!",
+        body: "Such a lovely community for cat lovers!",
         img: "https://avatar.vercel.sh/john",
     },
     {
         name: "Jane",
         username: "@jane",
-        body: "Wonderful content about daily farm life. Amazing!",
+        body: "Love the daily life with cats content. So cozy and fun!",
         img: "https://avatar.vercel.sh/jane",
     },
     {
         name: "Jenny",
         username: "@jenny",
-        body: "The exclusive footage is just stunning. I love it!",
+        body: "The cat videos and moments are absolutely adorable!",
         img: "https://avatar.vercel.sh/jenny",
     },
     {
         name: "James",
         username: "@james",
-        body: "Horse health tips are spot on. Very useful website!",
+        body: "Really useful cat health tips. Learned a lot!",
         img: "https://avatar.vercel.sh/james",
     },
 ];

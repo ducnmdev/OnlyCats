@@ -24,7 +24,7 @@ const AuthScreen = () => {
 
             <div className="mt-24">
               <p className="text-2xl md:text-5xl text-center tracking-tight font-bold">
-                Meet the <RotatedText>Stars</RotatedText> of Our Farm
+                Meet the <RotatedText>Stars</RotatedText> of Our Cat Family
               </p>
               <MasonryGrid />
             </div>

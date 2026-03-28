@@ -1,15 +1,21 @@
 import UnderlinedText from "@/components/decorators/UnderlinedText"
 import Post from "./Post"
 import PostSkeleton from "@/components/skeletons/PostSkeleton"
-import { posts, admin, user } from "@/dummy_data"
+import { useQuery } from "@tanstack/react-query";
+import { fetchPosts } from "@/lib/api/post";
+import { PostType } from "@/types/post";
+import { adminI } from "@/types/user";
 
-const Posts = () => {
-    const isLoading = false
+const Posts = ({ isSubscribed, admin }: { isSubscribed: boolean, admin: adminI }) => {
+    const { data: posts, isLoading } = useQuery<PostType[]>({
+        queryKey: ["posts"],
+        queryFn: fetchPosts,
+    });
     return (
         <div>
 
-            {!isLoading && posts.map(post => (
-                <Post key={post.id} post={post} admin={admin} isSubscribed={user.isSubscribed}/>
+            {!isLoading && posts?.map(post => (
+                <Post key={post.id} post={post} admin={admin} isSubscribed={isSubscribed} />
             ))}
 
             {isLoading && (
@@ -20,7 +26,7 @@ const Posts = () => {
                 </div>
             )}
 
-            {!isLoading && posts.length === 0 && (
+            {!isLoading && posts?.length === 0 && (
                 <div className="mt-10 px-3">
                     <div className="flex flex-col items-center space-y-3 w-full md:w-3/4 mx-auto">
                         <p className="text-lg font-semibold">
@@ -29,7 +35,7 @@ const Posts = () => {
 
                         <p className="text-center">
                             Stay tuned for more posts from
-                            <span className="text-primary font-semibold text-xl"> OnlyHorse</span>. You can subscribe to access
+                            <span className="text-primary font-semibold text-xl"> OnlyCat</span>. You can subscribe to access
                             exclusive content when it's available.
                         </p>
                     </div>

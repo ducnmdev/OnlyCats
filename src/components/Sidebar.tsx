@@ -1,9 +1,15 @@
+"use client";
+
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { Home, LayoutDashboard, Shirt, User } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { ModeToggle } from "./ModeToggle";
-import { user } from "@/dummy_data";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { logout } from "@/lib/api/auth";
+import { useAuth } from "@/hooks/useAuth";
 
 const SIDEBAR_LINKS = [
     {
@@ -19,7 +25,33 @@ const SIDEBAR_LINKS = [
 ];
 
 const Sidebar = () => {
-    const isAdmin = true
+    const queryClient = useQueryClient();
+    const router = useRouter();
+
+    const { data: user } = useAuth();
+
+
+    const { mutate: logoutUser, isPending } = useMutation({
+        mutationFn: logout,
+
+        onMutate: async () => {                 // chạy trc khi rq gửi lên server
+            toast.loading("Logging out...");
+        },
+
+        onSuccess: () => {
+            queryClient.setQueryData(["authUser"], null); // cập nhật cache authUser = null instantly
+            toast.dismiss();
+            toast.success("Logged out successfully");
+            router.push("/");
+        },
+
+        onError: () => {
+            toast.dismiss();
+            toast.error("Logout failed. Try again.");
+        },
+    });
+
+    const isAdmin = process.env.NEXT_PUBLIC_ADMIN_EMAIL === user?.email
     return (
         <div className="flex lg:w-1/5 flex-col gap-3 px-2 border-r sticky left-0 top-0 h-screen">
             <Link href='/update-profile' className="max-w-fit lg:px-1 px-2">
@@ -60,10 +92,15 @@ const Sidebar = () => {
                     <DropdownMenuContent>
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <Link href={'#'}>
+                        <Link href={process.env.NEXT_PUBLIC_STRIPE_BILLING_PORTAL_LINK_DEV + "?prefilled_email=" + user?.email}>
                             <DropdownMenuItem className="cursor-pointer">Billing</DropdownMenuItem>
                         </Link>
-                        <DropdownMenuItem className="cursor-pointer">Logout</DropdownMenuItem>
+                        <DropdownMenuItem
+                            className="cursor-pointer"
+                            onClick={() => logoutUser()}
+                        >
+                            {isPending ? "Logging out..." : "Logout"}
+                        </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
 

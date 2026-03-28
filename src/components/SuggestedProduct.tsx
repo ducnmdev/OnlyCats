@@ -3,8 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { centsToDollars, cn } from "@/lib/utils"
 import Link from "next/link"
 import { buttonVariants } from "./ui/button"
+import { Product } from "@/app/(protected)/secret-dashboard/store/ExistingProducts"
 
-const SuggestedProduct = ({ product }: { product: any }) => {
+const SuggestedProduct = ({ product }: { product: Product }) => {
     return (
         <Card className="flex flex-col">
             <CardHeader className="px-2 flex flex-row items-center justify-between space-y-0 pb-0">

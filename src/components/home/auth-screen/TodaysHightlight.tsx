@@ -8,7 +8,7 @@ const TodaysHightlight = () => {
             width='960'
             height='540'
             className='rounded-md'
-            src='highlighted-vid_bd7c1a'
+            src='highlight-vid-kusn-1683'
             />
         </div>
     )

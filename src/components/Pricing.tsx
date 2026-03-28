@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { fetchMe } from "@/lib/api/auth";
+import toast from "react-hot-toast";
 
 export interface PricingTierFrequency {
 	id: string;
@@ -39,8 +42,8 @@ export const tiers: PricingTier[] = [
 	{
 		name: "Premium Plan",
 		id: "0",
-		price: { "1": "$89", "2": "$999" },
-		discountPrice: { "1": "$59", "2": "$499" },
+		price: { "1": "$1.99", "2": "$9.99" },
+		discountPrice: { "1": "$0.99", "2": "$4.99" },
 		description: `Get access to our exclusive content. Cancel anytime.`,
 		features: [`Access to all premium content`, "Comment your thoughts", "Like your favorite posts"],
 		cta: `Join Us`,
@@ -74,6 +77,7 @@ const CheckIcon = ({ className }: { className?: string }) => {
 
 export default function Pricing() {
 	const [frequency, setFrequency] = useState(frequencies[0]);
+	const router = useRouter();
 
 	const tier = tiers[0];
 	const bannerText = "Save 25% on all plans for a limited time";
@@ -81,8 +85,21 @@ export default function Pricing() {
 	const monthlyUrl = tier.monthlyUrl;
 	const yearlyUrl = tier.yearlyUrl;
 
-	const saveStripeLinkToLocalStorage = (url: string) => {
-		localStorage.setItem("stripeRedirectUrl", url);
+	const handleCheckout = async () => {
+		const user = await fetchMe();
+
+		if (user?.isSubscribed) {
+			toast.error("You are already subscribed!");
+			return;
+		}
+		const url = frequency.value === "1" ? monthlyUrl : yearlyUrl;
+
+		if (!user) {
+			localStorage.setItem("stripeRedirectUrl", url);
+			router.push("/login");
+		} else {
+			window.location.href = url + "?prefilled_email=" + user.email;
+		}
 	};
 
 	return (
@@ -176,7 +193,7 @@ export default function Pricing() {
 												"text-5xl font-bold tracking-tight text-black dark:text-white",
 												tier.discountPrice &&
 													tier.discountPrice[
-														frequency.value as keyof typeof tier.discountPrice
+													frequency.value as keyof typeof tier.discountPrice
 													]
 													? "line-through"
 													: ""
@@ -196,19 +213,8 @@ export default function Pricing() {
 										</span>
 									</p>
 
-									<Button
-										asChild
-										size='lg'
-										className='my-3'
-										onClick={() => {
-											if (frequency.value === "1") {
-												saveStripeLinkToLocalStorage(monthlyUrl);
-											} else {
-												saveStripeLinkToLocalStorage(yearlyUrl);
-											}
-										}}
-									>
-										<Link href={"/api/auth/login"}>{tier.cta}</Link>
+									<Button size='lg' className='my-3 cursor-pointer' onClick={handleCheckout}>
+										{tier.cta}
 									</Button>
 								</div>
 							</div>

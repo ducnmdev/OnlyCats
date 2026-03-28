@@ -33,7 +33,7 @@ const MasonryGrid = () => {
                     >
                         <Image src={`/featured/featured${index + 1}.jpg`}
                             className="cursor-pointer hover:scale-150 transition-transform duration-500 ease-in-out"
-                            alt="Featured Horse"
+                            alt="Featured Cat"
                             style={{
                                 transformOrigin:`${mousePosition.x}% ${mousePosition.y}%`
                             }}
