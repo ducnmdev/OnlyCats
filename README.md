@@ -1,7 +1,4 @@
-open and wait for it to load
-https://onlycat-be.onrender.com/
-
-then open
+open and wait for it to load:
 https://onlycat-app.vercel.app/
 
 ### Clone the repository
